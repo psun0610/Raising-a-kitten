@@ -11,18 +11,16 @@
   - 에너지 energy: integer
 - 힘 strength: integer
   - 체지방 body_fat: integer
-<<<<<<< Updated upstream
 
   - 인기 popularity: integer
-
+  
   - 돈 gold: integer
   - 레벨 level: integer
-=======
+  =======
 - 인기 popularity: integer
   - 돈 money: integer
 - 레벨 level: integer
->>>>>>> Stashed changes
-  - 사료 feed: integer
+- 사료 feed: integer
 - 데이트 meeting: integer
 - 아이템 Items
 
@@ -68,9 +66,6 @@
 # 아이디어 (추후 업데이트)
 
 - 쓸데없는 백 억 짜리 왕관
-<<<<<<< Updated upstream
 - 노가다 종류
 
-=======
 - 미용실 -> 망한머리
->>>>>>> Stashed changes
