@@ -5,5 +5,5 @@ app_name = 'rak'
 
 urlpatterns = [
     path('', views.start, name='start'),
-    path('/home', views.home, name='home')
+    path('home/', views.home, name='home'),
 ]
