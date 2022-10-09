@@ -27,3 +27,5 @@ class Snacks(models.Model):
 
 class Challenge(models.Model):
     name = models.CharField(max_length=50)
+    condition = models.TextField(null=True)
+    complete = models.BooleanField(default=False)
