@@ -12,7 +12,7 @@ class Cat(models.Model):
     level = models.IntegerField(default=1)
     feed = models.IntegerField(default=1)
     meeting = models.IntegerField(default=0)
-    profile = models.ImageField(upload_to='home', null=True)
+    profile = models.ImageField(upload_to="home", null=True)
 
 
 class Items(models.Model):
