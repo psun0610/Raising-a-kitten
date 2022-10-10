@@ -1,33 +1,38 @@
 {% extends 'base.html' %}
 {% block body %}
-<div>
+<div class="containers">
   <!-- 배경 -->
   <div>
     <header class="d-flex">
       <!-- 프로필 -->
       <div>
         <!-- 프로필 사진 -->
-        <div></div>
+        <div class="profile_img"></div>
         <!-- 고양이 이름표 -->
-        <div>{{ cat.name }}</div>
+        <div class="cat_name">{{ cat.name }}</div>
       </div>
       <!-- 스탯창 -->
-      <div class="d-flex">
+      <div class="d-flex justify-content-between stats">
         <!-- 배고픔 행복 -->
-        <div>
+        <div class="d-flex flex-column justify-content-around">
           <!-- 행복 -->
-          <div>{{ cat.happiness }}</div>
+          {{ cat.happiness }}
+          <progress class="d-inline-block happiness progressTag" value="0" max="100"></progress>
           <!-- 배고픔 -->
-          <div>{{ cat.energy }}</div>
+          <div class="cat_stat">{{ cat.energy }}</div>
+          <progress class="d-inline-block energy progressTag" value="0" max="100"></progress>
         </div>
         <!-- 나머지 스탯 -->
-        <div>
+        <div class="d-flex flex-column justify-content-between">
           <!-- 힘 -->
-          <div>{{ cat.strength }}</div>
+          <div class="cat_stat">{{ cat.strength }}</div>
+          <progress class="d-inline-block strength progressTag" value="0" max="100"></progress>
           <!-- 체지방 -->
-          <div>{{ cat.body_fat }}</div>
+          <div class="cat_stat">{{ cat.body_fat }}</div>
+          <progress class="d-inline-block body_fat progressTag" value="0" max="100"></progress>
           <!-- 인기 -->
-          <div>{{ cat.popularity }}</div>
+          <div class="cat_stat">{{ cat.popularity }}</div>
+          <progress class="d-inline-block popularity progressTag" value="0" max="100"></progress>
         </div>
       </div>
     </header>
@@ -62,4 +67,36 @@
     <div></div>
   </footer>
 </div>
+<script>
+  var progress_list = {
+    happiness: "{{ cat.happiness }}",
+    energy: "{{ cat.energy }}",
+    strength: "{{ cat.strength }}",
+    body_fat: "{{ cat.body_fat }}",
+    popularity: "{{ cat.popularity }}"
+  }
+  function tag (pgstatus) {
+    let progress = document.querySelector(pgstatus)
+    let interval = 1
+    let updatesPerSecond = 1000 / 60
+    let end = progress.max * progress_list[pgstatus] * 1 / 100
+
+  function animator () {
+    progress.value = progress.value + interval
+    if ( progress.value + interval < end){
+      setTimeout(animator, updatesPerSecond);
+    } else { 
+      progress.value = end
+    }
+  }
+
+  setTimeout(() => {
+    animator()
+  }, updatesPerSecond)
+}
+
+for(key in progress_list){
+  tag(key)
+}
+</script>
 {% endblock %}
